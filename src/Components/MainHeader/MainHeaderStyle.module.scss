@@ -1,0 +1,27 @@
+@import "src/theme/base/variables";
+.header {
+  margin: 0 0 30px;
+}
+
+.header_holder {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 14px 60px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: $dark-black;
+  margin-right: 70px;
+
+  a {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}

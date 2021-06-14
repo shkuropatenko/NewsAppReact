@@ -1,0 +1,51 @@
+@import "src/theme/base/variables";
+
+.search_form {
+  border-radius: 4px;
+  background: $light-gray;
+  display: flex;
+  align-items: center;
+  width: 350px;
+  padding: 7px 19px;
+
+  input[type="search"] {
+    border: none;
+    padding: 0;
+    background: none;
+    height: 32px;
+    flex-grow: 1;
+    outline: none;
+    color: $dark-black;
+  }
+
+  input::-webkit-input-placeholder {
+    color: $dark-black;
+  }
+
+  input::-ms-input-placeholder {
+    color: $dark-black;
+  }
+
+  input::-moz-placeholder {
+    opacity: 1;
+    color: $dark-black;
+  }
+
+  input:-moz-placeholder {
+    opacity: 1;
+    color: $dark-black;
+  }
+
+  input::placeholder {
+    color: $dark-black;
+  }
+
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-right: 12px;
+    color: $dark-black;
+    font-size: 22px;
+  }
+}
