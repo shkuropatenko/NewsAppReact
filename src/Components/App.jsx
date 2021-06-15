@@ -1,25 +1,24 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainHeader from "./MainHeader/MainHeader";
-import NewsBox from "./NewsBox/NewsBox";
+import Routes from "./Routes/Routes";
+import { api } from "../Services/api/postApi";
+
 
 const App = () => {
+
   return (
     <>
       <MainHeader />
-      <main>
-        <div className="container">
-          <div className="news-frame">
-            <BrowserRouter>
-              <Route path="/news" component={NewsBox} />
-              <NewsBox />
-              <NewsBox />
-              <NewsBox />
-              <NewsBox />
-            </BrowserRouter>
-          </div>
-        </div>
-      </main>
+      <Router>
+        <main>
+            <div className="container">
+              <Switch>
+                <Routes />
+              </Switch>
+            </div>
+        </main>
+      </Router>
     </>
   );
 }
