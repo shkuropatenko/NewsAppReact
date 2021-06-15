@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router,  Switch } from "react-router-dom";
 import MainHeader from "./MainHeader/MainHeader";
+import Footer from "./Footer/Footer";
 import Routes from "./Routes/Routes";
-import { api } from "../Services/api/postApi";
 
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
     <>
       <MainHeader />
       <Router>
-        <main>
+        <main className="main">
             <div className="container">
               <Switch>
                 <Routes />
@@ -19,6 +19,7 @@ const App = () => {
             </div>
         </main>
       </Router>
+      <Footer />
     </>
   );
 }

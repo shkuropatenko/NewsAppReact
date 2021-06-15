@@ -1,0 +1,23 @@
+@import "src/theme/base/variables";
+
+.visual {
+  margin: 0 0 60px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.sub_box {
+  display: flex;
+  padding: 0 0 30px;
+  margin: 0 0 37px;
+  border-bottom: 1px solid $light-gray;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.description {
+  max-width: 760px;
+  margin: 0 auto;
+}

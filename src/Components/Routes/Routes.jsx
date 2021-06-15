@@ -1,8 +1,8 @@
 import NewsBox from "../NewsBox/NewsBox";
 import Post from "../Post/Post";
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-const Routes = ({posts}) => {
+import { Route } from "react-router-dom";
+const Routes = () => {
   return (
     <>
       <Route exact path="/">

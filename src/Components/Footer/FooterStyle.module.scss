@@ -1,0 +1,9 @@
+@import "src/theme/base/variables";
+
+.footer {
+  padding: 19px 0;
+  border-top: 1px solid $light-gray;
+  font-size: 16px;
+  line-height: 19px;
+  color: $dark-black;
+}
