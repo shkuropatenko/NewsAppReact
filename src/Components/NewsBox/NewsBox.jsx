@@ -29,8 +29,6 @@ const NewsBox = () => {
     <div className="news-frame">
 
       {posts.map(post => {
-        // const sortedActivities = (post.id.sort((a, b) => b.fields.lastModified - a.fields.lastModified);
-
         return (
           <article key={post.id} className={styles.box}>
             <div onClick={(e) => handleClick(e, post)} className={styles.img_box}>

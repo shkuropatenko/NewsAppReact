@@ -19,7 +19,6 @@ const Post = () => {
         </div>
         <div dangerouslySetInnerHTML={createMarkup()} />
       </div>
-      {/*<div>{post.fields.body}</div>*/}
     </div>
   );
 }
