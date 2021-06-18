@@ -11,7 +11,7 @@ const App = () => {
   const [initPosts, setInitPosts] = useState([]);
 
   return (
-    <>
+    <div className="wrapper">
         <PostsContext.Provider
           value={{ initPosts, setInitPosts, filteredPosts, setFilteredPosts }}
           // value={100}
@@ -28,7 +28,7 @@ const App = () => {
       </Router>
       <Footer />
         </PostsContext.Provider>
-    </>
+    </div>
   );
 }
 
