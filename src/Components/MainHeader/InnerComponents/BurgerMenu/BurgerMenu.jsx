@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { linkHeader } from "../../../../constants";
+import context from "../../../../context";
+import { api } from "../../../../Services/api/postApi";
 import styles from "./BurgerMenuStyle.module.scss";
 
 const BurgerMenu = () => {
@@ -8,8 +10,14 @@ const BurgerMenu = () => {
     setActive(!isActive);
   };
 
-  const handleClick = (e, item) => {
-    console.log(item)
+  const {initPosts, setInitPosts, filteredPosts, setFilteredPosts} = useContext(context);
+
+  const handleClick = (e, search) => {
+    api.getAllSearch(search).then(result => {
+      const filteredArr = result.data.response.results;
+      setInitPosts(filteredArr);
+      setFilteredPosts(filteredArr);
+    });
   }
 
   return (
