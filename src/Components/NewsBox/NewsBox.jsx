@@ -1,22 +1,15 @@
-import styles from "./NewsBoxStyle.module.scss";
-import {useEffect, useState, useContext} from "react";
-import { api } from "../../Services/api/postApi";
-import { useLocation, useHistory } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { loadPosts } from "../../Services/api/postApi";
+import { useHistory } from "react-router-dom";
 import context from "../../context";
+import styles from "./NewsBoxStyle.module.scss";
 
 const NewsBox = () => {
-  const {initPosts, setInitPosts, filteredPosts, setFilteredPosts} = useContext(context);
+  const { setInitPosts, filteredPosts, setFilteredPosts } = useContext(context);
 
-  const handleClick = (e, post) => {
-
-    history.push({
-      pathname: "/singlePost",
-      state: { post },
-    });
-  }
   useEffect(async ()=> {
     try{
-      const response = await api.getAll();
+      const response = await loadPosts();
       const postArr = response.data.response.results;
       setInitPosts(postArr);
       setFilteredPosts(postArr);
@@ -26,6 +19,7 @@ const NewsBox = () => {
   }, []);
 
   const history = useHistory();
+
   const redirectToPost = (e, id) => {
     history.push({
       pathname: `/post/${id}`,

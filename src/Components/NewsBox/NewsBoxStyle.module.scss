@@ -1,3 +1,5 @@
+@import "../../theme/vendors/include-media";
+
 .box {
   box-shadow: 0 4px 4px rgba(192, 189, 189, 0.25);
   border-radius: 5px;
@@ -5,11 +7,25 @@
   font-size: 14px;
   line-height: 1.214;
   margin: 0 0 30px;
+  display: flex;
+  flex-direction: column;
+
+  @include media("<desktop") {
+    width: 49%;
+  }
+
+  @include media("<tablet") {
+    width: 100%;
+  }
 
   &:first-child {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
+
+    @include media("<desktop") {
+      flex-direction: column;
+    }
 
     .box_description {
       padding: 41px 57px 43px;
@@ -51,11 +67,15 @@
 
 .box_description {
   padding: 16px 16px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .sub_box {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 
   time,
   a {

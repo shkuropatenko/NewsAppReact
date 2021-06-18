@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { linkHeader } from "../../../../constants";
 import context from "../../../../context";
-import { api } from "../../../../Services/api/postApi";
+import { loadPosts } from "../../../../Services/api/postApi";
 import styles from "./BurgerMenuStyle.module.scss";
 
 const BurgerMenu = () => {
@@ -13,7 +13,7 @@ const BurgerMenu = () => {
   const {initPosts, setInitPosts, filteredPosts, setFilteredPosts} = useContext(context);
 
   const handleClick = (e, search) => {
-    api.getAllSearch(search).then(result => {
+    loadPosts(search).then(result => {
       const filteredArr = result.data.response.results;
       setInitPosts(filteredArr);
       setFilteredPosts(filteredArr);
@@ -28,9 +28,9 @@ const BurgerMenu = () => {
             <a href="#">Categories</a>
             <div className={styles.drop_holder}>
               <ul>
-                {linkHeader.map(item => {
+                {linkHeader.map((item, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <a onClick={(e)=> handleClick(e, item)} href="#">{item}</a>
                     </li>
                   );
@@ -39,7 +39,7 @@ const BurgerMenu = () => {
             </div>
           </li>
           <li>
-            <a href="#">⚡️ Trending news</a>
+            <a href="#" onClick={(e)=> handleClick(e, "trending")}>⚡️ Trending news</a>
           </li>
         </ul>
       </div>

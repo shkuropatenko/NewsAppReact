@@ -4,7 +4,6 @@ import context from "../../context";
 import styles from "./PostStyle.module.scss";
 
 const Post = () => {
-  // const { state: { post } } = useLocation();
   const { initPosts } = useContext(context);
   const { id } = useParams();
   const post = initPosts.find((item) => item.id === id);

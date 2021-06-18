@@ -1,4 +1,5 @@
 @import "src/theme/base/variables";
+@import "../../../../theme/vendors/include-media";
 
 .search_form {
   border-radius: 4px;
@@ -7,6 +8,10 @@
   align-items: center;
   width: 350px;
   padding: 7px 19px;
+
+  @include media("<desktop") {
+    width: 100%;
+  }
 
   input[type="search"] {
     border: none;

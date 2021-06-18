@@ -1,19 +1,9 @@
-import { useState } from "react";
 import SearchForm from "./InnerComponents/SearchForm/SearchForm";
 import BurgerMenu from "./InnerComponents/BurgerMenu/BurgerMenu";
 import styles from "./MainHeaderStyle.module.scss";
 
 
 const MainHeader = () => {
-  const [isActive, setActive] = useState("false");
-
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
-
-  // const handleClick = (e, item) => {
-  //   console.log(item)
-  // }
 
   return (
     <header className={styles.header}>

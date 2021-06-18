@@ -1,12 +1,8 @@
 @import "src/theme/base/variables";
+@import "../../theme/vendors/include-media";
+
 .header {
   margin: 0 0 30px;
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
 }
 
 .header_holder {
@@ -16,12 +12,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include media("<desktop") {
+    align-items: flex-start;
+    padding: 14px 30px;
+  }
+
+  @include media("<tablet") {
+    display: block;
+  }
 }
 
 .header_frame {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include media("<desktop") {
+    display: block;
+  }
 }
 
 .logo {
@@ -30,6 +39,11 @@
   line-height: 24px;
   color: $dark-black;
   margin-right: 70px;
+
+  @include media("<desktop") {
+    display: block;
+    margin: 0 0 10px;
+  }
 
   a {
     &:hover,
