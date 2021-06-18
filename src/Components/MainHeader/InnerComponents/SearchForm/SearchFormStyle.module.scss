@@ -49,3 +49,36 @@
     font-size: 22px;
   }
 }
+
+.clear_btn {
+  width: 0;
+  height: 12px;
+  position: relative;
+
+  span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #000;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transition: .25s ease-in-out;
+    transform: rotate(0);
+  }
+
+  &.change {
+    width: 18px;
+    height: 12px;
+    position: relative;
+
+    span {
+      transform: rotate(45deg);
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
