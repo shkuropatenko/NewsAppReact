@@ -8,6 +8,20 @@ import styles from "./NewsBoxStyle.module.scss";
 const NewsBox = () => {
   const { setInitPosts, filteredPosts, setFilteredPosts } = useContext(context);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAnchorVisible, setIsAnchorVisible] = useState(false);
+
+  const handleScroll = (e) => {
+    if (window.scrollY > 200) {
+      setIsAnchorVisible(true);
+    } else {
+      setIsAnchorVisible(false);
+    }
+  };
+
+  const toTop = () => {
+    setIsAnchorVisible(false);
+    window.scrollTo({ top: 0 });
+  };
 
   useEffect(async ()=> {
     try{
@@ -21,7 +35,9 @@ const NewsBox = () => {
       setIsLoading(false);
       console.log(e)
     }
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setFilteredPosts, setInitPosts]);
 
   const history = useHistory();
 
@@ -54,6 +70,11 @@ const NewsBox = () => {
         );
       })}
       {isLoading && <Loader />}
+      {isAnchorVisible && (
+        <div className="top-anchor" onClick={toTop}>
+          TO TOP
+        </div>
+      )}
     </div>
   );
 }
