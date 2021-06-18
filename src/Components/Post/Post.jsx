@@ -10,6 +10,7 @@ const Post = () => {
   function createMarkup() {
     return {__html: post?.fields.body};
   }
+  const parsdate = new Date(post?.fields.lastModified).toLocaleDateString("en-US");
 
   return (
     <div>
@@ -19,7 +20,7 @@ const Post = () => {
       <div className={styles.description}>
         <h1>{post?.fields.headline}</h1>
         <div className={styles.sub_box}>
-          <time>{post?.fields.firstPublicationDate}</time>
+          <time>{parsdate}</time>
         </div>
         <div dangerouslySetInnerHTML={createMarkup()} />
       </div>

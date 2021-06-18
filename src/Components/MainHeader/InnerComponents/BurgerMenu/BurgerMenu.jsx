@@ -21,7 +21,6 @@ const BurgerMenu = () => {
       const filteredArr = result.data.response.results;
       setInitPosts(filteredArr);
       setFilteredPosts(filteredArr);
-      console.log(filteredArr)
       if (location.pathname !== "/") {
         history.push('/')
       }

@@ -28,8 +28,16 @@ const NewsBox = () => {
       setIsLoading(true);
       const response = await loadPosts();
       const postArr = response.data.response.results;
-      setInitPosts(postArr);
-      setFilteredPosts(postArr);
+
+      const filteredByDatePost = postArr.sort((a, b) => {
+        if(a.fields.lastModified > b.fields.lastModified) {
+          return -1
+        } else {
+          return 1
+        }
+      }) || [];
+      setInitPosts(filteredByDatePost);
+      setFilteredPosts(filteredByDatePost);
       setIsLoading(false);
     } catch (e){
       setIsLoading(false);
@@ -51,6 +59,7 @@ const NewsBox = () => {
     <div className="news-frame">
 
       {filteredPosts.map(post => {
+        const parsdate = new Date(post.fields.lastModified).toLocaleDateString("en-US");
         return (
           <article key={post.id} className={styles.box}>
             <div onClick={(e) => redirectToPost(e, post.id)} className={styles.img_box}>
@@ -62,7 +71,7 @@ const NewsBox = () => {
               </h2>
               <p>{post.fields.trailText}</p>
               <div className={styles.sub_box}>
-                <time>{post.fields.lastModified}</time>
+                <time>{parsdate}</time>
                 <a href={post.fields.shortUrl} target="_blank">Read more</a>
               </div>
             </div>
