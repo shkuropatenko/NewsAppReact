@@ -1,0 +1,40 @@
+.loader_wrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: rgb(204, 202, 202);
+  color: rgb(36, 35, 35);
+  animation: loaderAnimaton 2s linear infinite;
+  box-shadow: 0 0 6px 0 rgba(8, 9, 9, 0.2);
+  transition: width 2s;
+}
+
+@keyframes loaderAnimaton {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.5) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.5) rotate(360deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}

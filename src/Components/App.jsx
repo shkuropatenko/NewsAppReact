@@ -11,21 +11,21 @@ const App = () => {
 
   return (
     <div className="wrapper">
+      <Router>
         <PostsContext.Provider
           value={{ initPosts, setInitPosts, filteredPosts, setFilteredPosts }}
         >
-      <MainHeader />
-      <Router>
-        <main className="main">
-            <div className="container">
-              <Switch>
-                <Routes />
-              </Switch>
-            </div>
-        </main>
-      </Router>
-      <Footer />
+        <MainHeader />
+          <main className="main">
+              <div className="container">
+                <Switch>
+                  <Routes />
+                </Switch>
+              </div>
+          </main>
+        <Footer />
         </PostsContext.Provider>
+      </Router>
     </div>
   );
 }

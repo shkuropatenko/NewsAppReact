@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { linkHeader } from "../../../../constants";
 import context from "../../../../context";
 import { loadPosts } from "../../../../Services/api/postApi";
@@ -10,6 +11,9 @@ const BurgerMenu = () => {
     setActive(!isActive);
   };
 
+  const history = useHistory();
+  const location = useLocation();
+
   const {initPosts, setInitPosts, filteredPosts, setFilteredPosts} = useContext(context);
 
   const handleClick = (e, search) => {
@@ -17,6 +21,10 @@ const BurgerMenu = () => {
       const filteredArr = result.data.response.results;
       setInitPosts(filteredArr);
       setFilteredPosts(filteredArr);
+      console.log(filteredArr)
+      if (location.pathname !== "/") {
+        history.push('/')
+      }
     });
   }
 

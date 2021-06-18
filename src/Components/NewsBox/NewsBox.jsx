@@ -1,19 +1,24 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { loadPosts } from "../../Services/api/postApi";
 import { useHistory } from "react-router-dom";
 import context from "../../context";
+import Loader from "../Loader/Loader";
 import styles from "./NewsBoxStyle.module.scss";
 
 const NewsBox = () => {
   const { setInitPosts, filteredPosts, setFilteredPosts } = useContext(context);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async ()=> {
     try{
+      setIsLoading(true);
       const response = await loadPosts();
       const postArr = response.data.response.results;
       setInitPosts(postArr);
       setFilteredPosts(postArr);
+      setIsLoading(false);
     } catch (e){
+      setIsLoading(false);
       console.log(e)
     }
   }, []);
@@ -48,6 +53,7 @@ const NewsBox = () => {
           </article>
         );
       })}
+      {isLoading && <Loader />}
     </div>
   );
 }

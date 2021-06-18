@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import { useContext } from "react";
 import context from "../../context";
 import styles from "./PostStyle.module.scss";
@@ -8,18 +8,18 @@ const Post = () => {
   const { id } = useParams();
   const post = initPosts.find((item) => item.id === id);
   function createMarkup() {
-    return {__html: post.fields.body};
+    return {__html: post?.fields.body};
   }
 
   return (
     <div>
       <div className={styles.visual}>
-        <img src={post.fields.thumbnail} alt="image description"/>
+        <img src={post?.fields.thumbnail} alt="image description"/>
       </div>
       <div className={styles.description}>
-        <h1>{post.fields.headline}</h1>
+        <h1>{post?.fields.headline}</h1>
         <div className={styles.sub_box}>
-          <time>{post.fields.firstPublicationDate}</time>
+          <time>{post?.fields.firstPublicationDate}</time>
         </div>
         <div dangerouslySetInnerHTML={createMarkup()} />
       </div>
