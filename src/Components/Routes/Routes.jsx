@@ -8,9 +8,7 @@ const Routes = () => {
       <Route exact path="/">
         <NewsBox />
       </Route>
-      <Route path="/singlePost">
-        <Post />
-      </Route>
+      <Route path="/post/:id*" component={Post} />
     </>
   )
 }

@@ -1,12 +1,13 @@
 import styles from "./NewsBoxStyle.module.scss";
-import {useEffect, useState} from "react";
-import {api} from "../../Services/api/postApi";
+import {useEffect, useState, useContext} from "react";
+import { api } from "../../Services/api/postApi";
 import { useLocation, useHistory } from "react-router-dom";
+import context from "../../context";
+
 const NewsBox = () => {
-  const [posts, setPosts] = useState([]);
-  const history = useHistory();
+  const {initPosts, setInitPosts, filteredPosts, setFilteredPosts} = useContext(context);
+
   const handleClick = (e, post) => {
-    console.log(post)
 
     history.push({
       pathname: "/singlePost",
@@ -17,26 +18,32 @@ const NewsBox = () => {
     try{
       const response = await api.getAll();
       const postArr = response.data.response.results;
-      console.log(postArr)
-
-      setPosts(postArr)
+      setInitPosts(postArr);
+      setFilteredPosts(postArr);
     } catch (e){
       console.log(e)
     }
   }, []);
 
+  const history = useHistory();
+  const redirectToPost = (e, id) => {
+    history.push({
+      pathname: `/post/${id}`,
+    });
+  };
+
   return (
     <div className="news-frame">
 
-      {posts.map(post => {
+      {filteredPosts.map(post => {
         return (
           <article key={post.id} className={styles.box}>
-            <div onClick={(e) => handleClick(e, post)} className={styles.img_box}>
+            <div onClick={(e) => redirectToPost(e, post.id)} className={styles.img_box}>
               <img src={post.fields.thumbnail} alt="image description"/>
             </div>
             <div className={styles.box_description}>
               <h2>
-                <div data-id={post.id} onClick={(e) => handleClick(e, post)}>{post.fields.headline}</div>
+                <div onClick={(e) => redirectToPost(e, post.id)}>{post.fields.headline}</div>
               </h2>
               <p>{post.fields.trailText}</p>
               <div className={styles.sub_box}>

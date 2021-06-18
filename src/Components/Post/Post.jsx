@@ -1,8 +1,13 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import context from "../../context";
 import styles from "./PostStyle.module.scss";
 
 const Post = () => {
-  const { state: { post } } = useLocation();
+  // const { state: { post } } = useLocation();
+  const { initPosts } = useContext(context);
+  const { id } = useParams();
+  const post = initPosts.find((item) => item.id === id);
   function createMarkup() {
     return {__html: post.fields.body};
   }
@@ -19,6 +24,7 @@ const Post = () => {
         </div>
         <div dangerouslySetInnerHTML={createMarkup()} />
       </div>
+
     </div>
   );
 }
